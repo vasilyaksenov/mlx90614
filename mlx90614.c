@@ -131,12 +131,12 @@ void MLX90614_ScanDevices (void) {
 			  if (result != HAL_OK)
 			  {
 				  sprintf(temp_buff, ".");
-				  CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+//				  CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
 			  }
 			  if (result == HAL_OK)
 			  {
 				  sprintf(temp_buff, "0x%X", i);
-				  CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+//				  CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
 
 			  }
 		  }
@@ -145,11 +145,11 @@ void MLX90614_ScanDevices (void) {
 void MLX90614_SendDebugMsg(uint8_t op_type, uint8_t devAddr, uint8_t regAddr, uint16_t data, uint8_t crc_in, uint8_t crc_calc) {
 	if(op_type == MLX90614_DBG_MSG_W) {
 		snprintf(temp_buff, sizeof(temp_buff), "W Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_calc:0x%02X\r\n", devAddr, regAddr, data, crc_calc);
-		CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+//		CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
 	}
 	else if (op_type == MLX90614_DBG_MSG_R) {
 		snprintf(temp_buff, sizeof(temp_buff), "R Dev: 0x%02X, Reg: 0x%02X, Data: 0x%04X, CRC8_in:0x%02X, CRC8_calc:0x%02X\r\n", devAddr, regAddr, data, crc_in, crc_calc);
-		CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
+//		CDC_Transmit_FS(temp_buff, strlen((const char *)temp_buff));
 	}
 
 }
